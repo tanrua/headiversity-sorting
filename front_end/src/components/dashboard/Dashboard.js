@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -26,8 +26,8 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="https://github.com/tanrua/headiversity-sorting">
+        Simeon Gordon
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -161,13 +161,12 @@ export default function Dashboard() {
         >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Welcome />} />
-                <Route path="/weather/:city" element={<Welcome />} />
+                <Route path="/weather/" element={<Welcome />} />
+                <Route path="/weather/:city" element={<Cities />} />
                 <Route path="/data/cities" element={<Cities />} />
               </Routes>
-            </BrowserRouter>
             <Copyright sx={{ pt: 4 }} />
           </Container>
         </Box>

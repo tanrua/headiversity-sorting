@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { Link, BrowserRouter } from 'react-router-dom';
+
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
@@ -12,17 +14,23 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 
 export const mainListItems = (
   <React.Fragment>
-    <ListItemButton>
+    <ListItemButton component={Link} to="/">
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItemButton>
-    <ListItemButton>
+    <ListItemButton component={Link} to="/data/cities">
       <ListItemIcon>
         <ShoppingCartIcon />
       </ListItemIcon>
       <ListItemText primary="Data Generation" />
+    </ListItemButton>
+    <ListItemButton component={Link} to="/weather">
+      <ListItemIcon>
+        <ShoppingCartIcon />
+      </ListItemIcon>
+      <ListItemText primary="Local Weather" />
     </ListItemButton>
   </React.Fragment>
 );
@@ -32,19 +40,19 @@ export const secondaryListItems = (
     <ListSubheader component="div" inset>
       Saved Weather Reports
     </ListSubheader>
-    <ListItemButton>
+    <ListItemButton component={Link} to="/weather/halifax">
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>
       <ListItemText primary="Halifax" />
     </ListItemButton>
-    <ListItemButton>
+    <ListItemButton component={Link} to="/weather/ottawa">
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>
       <ListItemText primary="Ottawa" />
     </ListItemButton>
-    <ListItemButton>
+    <ListItemButton component={Link} to="/weather/calgary">
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>

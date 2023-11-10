@@ -1,12 +1,12 @@
-import * as React from 'react';
-import Link from '@mui/material/Link';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
+import * as React from 'react'
+import Link from '@mui/material/Link'
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
 
-import Title from '../dashboard/Title';
+import Title from '../dashboard/Title'
 import getComparator from '../../utils/TableUtils'
 import '../table/PokemonTable.scss'
 
@@ -27,18 +27,18 @@ export default function PokemonTable({
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc'
-    setOrder(isAsc ? 'desc' : 'asc');
-    setOrderBy(property);
-  };
+    setOrder(isAsc ? 'desc' : 'asc')
+    setOrderBy(property)
+  }
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelected = dataset.map((n) => n.id);
-      setSelected(newSelected);
-      return;
+      const newSelected = dataset.map((n) => n.id)
+      setSelected(newSelected)
+      return
     }
-    setSelected([]);
-  };
+    setSelected([])
+  }
 
   if (!dataset) return "No Pokemon Loaded"
 
@@ -79,5 +79,5 @@ export default function PokemonTable({
         See more pokemon
       </Link>
     </React.Fragment>
-  );
+  )
 }

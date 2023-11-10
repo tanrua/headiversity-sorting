@@ -1,8 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from './logo.svg'
+import './App.css'
 
-import { BrowserRouter } from 'react-router-dom';
-import Dashboard from './components/dashboard/Dashboard';
+import { BrowserRouter } from 'react-router-dom'
+import Dashboard from './components/dashboard/Dashboard'
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       </BrowserRouter>
       
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

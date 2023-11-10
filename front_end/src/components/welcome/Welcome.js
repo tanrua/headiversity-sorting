@@ -1,11 +1,11 @@
 
-import * as React from 'react';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
+import * as React from 'react'
+import Grid from '@mui/material/Grid'
+import Paper from '@mui/material/Paper'
 
-import Chart from '../dashboard/Chart';
-import Deposits from '../dashboard/Deposits';
-import Orders from '../dashboard/Orders';
+import Chart from '../dashboard/Chart'
+import Deposits from '../dashboard/Deposits'
+import Orders from '../dashboard/Orders'
 
 export default function Welcome() {
 

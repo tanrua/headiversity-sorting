@@ -1,26 +1,26 @@
-import * as React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import * as React from 'react'
+import { Route, Routes } from 'react-router-dom'
 
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import MuiDrawer from '@mui/material/Drawer';
-import Box from '@mui/material/Box';
-import MuiAppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
-import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import { mainListItems, secondaryListItems } from './listItems';
+import { styled, createTheme, ThemeProvider } from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
+import MuiDrawer from '@mui/material/Drawer'
+import Box from '@mui/material/Box'
+import MuiAppBar from '@mui/material/AppBar'
+import Toolbar from '@mui/material/Toolbar'
+import List from '@mui/material/List'
+import Typography from '@mui/material/Typography'
+import Divider from '@mui/material/Divider'
+import IconButton from '@mui/material/IconButton'
+import Badge from '@mui/material/Badge'
+import Container from '@mui/material/Container'
+import Link from '@mui/material/Link'
+import MenuIcon from '@mui/icons-material/Menu'
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
+import NotificationsIcon from '@mui/icons-material/Notifications'
+import { mainListItems, secondaryListItems } from './listItems'
 
-import Welcome from '../welcome/Welcome';
-import Pokemon from '../pokemon/Pokemon';
+import Welcome from '../welcome/Welcome'
+import Pokemon from '../pokemon/Pokemon'
 
 function Copyright(props) {
   return (
@@ -32,10 +32,10 @@ function Copyright(props) {
       {new Date().getFullYear()}
       {'.'}
     </Typography>
-  );
+  )
 }
 
-const drawerWidth = 240;
+const drawerWidth = 240
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -53,7 +53,7 @@ const AppBar = styled(MuiAppBar, {
       duration: theme.transitions.duration.enteringScreen,
     }),
   }),
-}));
+}))
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -79,15 +79,15 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
       }),
     },
   }),
-);
+)
 
-const defaultTheme = createTheme();
+const defaultTheme = createTheme()
 
 export default function Dashboard() {
   const [open, setOpen] = React.useState(true)
   const toggleDrawer = () => {
-    setOpen(!open);
-  };
+    setOpen(!open)
+  }
 
   return (
     <ThemeProvider theme={defaultTheme}>

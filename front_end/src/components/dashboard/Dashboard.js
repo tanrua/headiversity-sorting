@@ -20,7 +20,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
 
 import Welcome from '../welcome/Welcome';
-import Cities from '../datagen/Cities';
+import Pokemon from '../pokemon/Pokemon';
 
 function Copyright(props) {
   return (
@@ -118,13 +118,8 @@ export default function Dashboard() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Dashboard
+              Poor Man's Pokedex
             </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
@@ -163,9 +158,7 @@ export default function Dashboard() {
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
               <Routes>
                 <Route path="/" element={<Welcome />} />
-                <Route path="/weather/" element={<Welcome />} />
-                <Route path="/weather/:city" element={<Cities />} />
-                <Route path="/data/cities" element={<Cities />} />
+                <Route path="/pokemon" element={<Pokemon />} />
               </Routes>
             <Copyright sx={{ pt: 4 }} />
           </Container>

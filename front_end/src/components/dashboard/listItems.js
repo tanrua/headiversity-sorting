@@ -1,16 +1,18 @@
-import * as React from 'react';
-import { Link, BrowserRouter } from 'react-router-dom';
+import * as React from 'react'
+import { Link, BrowserRouter } from 'react-router-dom'
 
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import ListSubheader from '@mui/material/ListSubheader';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import PeopleIcon from '@mui/icons-material/People';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import LayersIcon from '@mui/icons-material/Layers';
-import AssignmentIcon from '@mui/icons-material/Assignment';
+import ListItemButton from '@mui/material/ListItemButton'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import ListItemText from '@mui/material/ListItemText'
+import ListSubheader from '@mui/material/ListSubheader'
+import DashboardIcon from '@mui/icons-material/Dashboard'
+import LooksOne from '@mui/icons-material/LooksOne'
+import LooksTwo from '@mui/icons-material/LooksTwo'
+import Looks3 from '@mui/icons-material/Looks3'
+import Looks4 from '@mui/icons-material/Looks4'
+import Looks5 from '@mui/icons-material/Looks5'
+import Looks6 from '@mui/icons-material/Looks6'
+import QueryStats from '@mui/icons-material/QueryStats'
 
 export const mainListItems = (
   <React.Fragment>
@@ -20,43 +22,60 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItemButton>
-    <ListItemButton component={Link} to="/data/cities">
+    <ListItemButton component={Link} to="/pokemon">
       <ListItemIcon>
-        <ShoppingCartIcon />
+        <QueryStats />
       </ListItemIcon>
-      <ListItemText primary="Data Generation" />
-    </ListItemButton>
-    <ListItemButton component={Link} to="/weather">
-      <ListItemIcon>
-        <ShoppingCartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Local Weather" />
+      <ListItemText primary="Pokemon Stats" />
     </ListItemButton>
   </React.Fragment>
-);
+)
 
 export const secondaryListItems = (
   <React.Fragment>
     <ListSubheader component="div" inset>
-      Saved Weather Reports
+      Pokemon by Generation
     </ListSubheader>
-    <ListItemButton component={Link} to="/weather/halifax">
+    <ListItemButton component={Link} to="/pokemon?gen=1">
       <ListItemIcon>
-        <AssignmentIcon />
+        <LooksOne />
       </ListItemIcon>
-      <ListItemText primary="Halifax" />
+      <ListItemText primary="Gen 1" />
     </ListItemButton>
-    <ListItemButton component={Link} to="/weather/ottawa">
+
+    <ListItemButton component={Link} to="/pokemon?gen=2">
       <ListItemIcon>
-        <AssignmentIcon />
+        <LooksTwo />
       </ListItemIcon>
-      <ListItemText primary="Ottawa" />
+      <ListItemText primary="Gen 2" />
     </ListItemButton>
-    <ListItemButton component={Link} to="/weather/calgary">
+
+    <ListItemButton component={Link} to="/pokemon?gen=3">
       <ListItemIcon>
-        <AssignmentIcon />
+        <Looks3 />
       </ListItemIcon>
-      <ListItemText primary="Calgary" />
+      <ListItemText primary="Gen 3" />
+    </ListItemButton>
+
+    <ListItemButton component={Link} to="/pokemon?gen=4">
+      <ListItemIcon>
+        <Looks4 />
+      </ListItemIcon>
+      <ListItemText primary="Gen 4" />
+    </ListItemButton>
+
+    <ListItemButton component={Link} to="/pokemon?gen=5">
+      <ListItemIcon>
+        <Looks5 />
+      </ListItemIcon>
+      <ListItemText primary="Gen 5" />
+    </ListItemButton>
+
+    <ListItemButton component={Link} to="/pokemon?gen=6">
+      <ListItemIcon>
+        <Looks6 />
+      </ListItemIcon>
+      <ListItemText primary="Gen 6" />
     </ListItemButton>
   </React.Fragment>
-);
+)

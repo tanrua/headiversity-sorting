@@ -1,13 +1,13 @@
-import * as React from 'react';
-import Link from '@mui/material/Link';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Title from './Title';
+import * as React from 'react'
+import Link from '@mui/material/Link'
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
+import Title from './Title'
 
-import axios from "axios";
+import axios from "axios"
 
 function preventDefault(event) {
   event.preventDefault()
@@ -15,15 +15,15 @@ function preventDefault(event) {
 
 const client = axios.create({
   baseURL: "http://localhost:3333/api/orders" 
-});
+})
 
 export default function Orders() {
   const [orders, setOrders] = React.useState(null)
 
   React.useEffect(() => {
     client.get().then((response) => {
-      setOrders(response.data.orders);
-    });
+      setOrders(response.data.orders)
+    })
   }, [])
 
   if (!orders) return "NO ORDERS"
@@ -58,5 +58,5 @@ export default function Orders() {
         See more orders
       </Link>
     </React.Fragment>
-  );
+  )
 }

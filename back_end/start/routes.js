@@ -23,3 +23,6 @@ Route.get('/', () => {
 Route.post('api/orders', 'OrderController.store')
 Route.get('api/orders', 'OrderController.index')
 Route.delete('api/orders/:id', 'OrderController.delete')
+
+Route.post('api/pokemon', 'PokemonController.store')
+Route.get('api/pokemon', 'PokemonController.index')

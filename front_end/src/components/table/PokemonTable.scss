@@ -6,7 +6,7 @@
 }
 
 .rounded-cell {
-  @include border-radius(2vh);
+  @include border-radius(1em);
 }
 
 .type {
@@ -32,4 +32,9 @@
 
 .legendary {
   background-color: #fff9c8;
+}
+
+p.MuiTablePagination-selectLabel, 
+p.MuiTablePagination-displayedRows {
+  margin-top: 1em;
 }

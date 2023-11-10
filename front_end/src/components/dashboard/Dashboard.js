@@ -24,9 +24,9 @@ import Pokemon from '../pokemon/Pokemon'
 
 function Copyright(props) {
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+    <Typography variant='body2' color='text.secondary' align='center' {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://github.com/tanrua/headiversity-sorting">
+      <Link color='inherit' href='https://github.com/tanrua/headiversity-sorting'>
         Simeon Gordon
       </Link>{' '}
       {new Date().getFullYear()}
@@ -93,16 +93,16 @@ export default function Dashboard() {
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
-        <AppBar position="absolute" open={open}>
+        <AppBar position='absolute' open={open}>
           <Toolbar
             sx={{
               pr: '24px', // keep right padding when drawer closed
             }}
           >
             <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
+              edge='start'
+              color='inherit'
+              aria-label='open drawer'
               onClick={toggleDrawer}
               sx={{
                 marginRight: '36px',
@@ -112,9 +112,9 @@ export default function Dashboard() {
               <MenuIcon />
             </IconButton>
             <Typography
-              component="h1"
-              variant="h6"
-              color="inherit"
+              component='h1'
+              variant='h6'
+              color='inherit'
               noWrap
               sx={{ flexGrow: 1 }}
             >
@@ -122,7 +122,7 @@ export default function Dashboard() {
             </Typography>
           </Toolbar>
         </AppBar>
-        <Drawer variant="permanent" open={open}>
+        <Drawer variant='permanent' open={open}>
           <Toolbar
             sx={{
               display: 'flex',
@@ -136,14 +136,14 @@ export default function Dashboard() {
             </IconButton>
           </Toolbar>
           <Divider />
-          <List component="nav">
+          <List component='nav'>
             {mainListItems}
             <Divider sx={{ my: 1 }} />
             {secondaryListItems}
           </List>
         </Drawer>
         <Box
-          component="main"
+          component='main'
           sx={{
             backgroundColor: (theme) =>
               theme.palette.mode === 'light'
@@ -155,10 +155,10 @@ export default function Dashboard() {
           }}
         >
           <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+          <Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}>
               <Routes>
-                <Route path="/" element={<Welcome />} />
-                <Route path="/pokemon" element={<Pokemon />} />
+                <Route path='/' element={<Welcome />} />
+                <Route path='/pokemon' element={<Pokemon />} />
               </Routes>
             <Copyright sx={{ pt: 4 }} />
           </Container>

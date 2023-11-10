@@ -2,11 +2,12 @@
 import * as React from 'react'
 import Grid from '@mui/material/Grid'
 import Paper from '@mui/material/Paper'
-import axios from "axios"
+import axios from 'axios'
 import PokemonTable from '../table/PokemonTable'
+import SkeletonTable from '../table/SkeletonTable'
 
 const client = axios.create({
-  baseURL: "http://localhost:3333/api/pokemon" 
+  baseURL: 'http://localhost:3333/api/pokemon' 
 })
 
 const headCells = [
@@ -24,17 +25,19 @@ const headCells = [
 
 export default function Pokemon() {
   const [pokemon, setpokemon] = React.useState(null)
-  const [loading, setLoading] = React.useState(false)
 
   React.useEffect(() => {
-    setLoading(true)
     client.get().then((response) => {
       setpokemon(response.data.pokemon)
     })
-    setLoading(false)
   }, [])
 
-  if (!pokemon) return "AAAAA"
+  if (!pokemon) return (
+    <SkeletonTable
+      headCells={headCells}
+      skeletonRowCount={25}
+    />
+  )
 
   return (
     <Grid container spacing={4}>
@@ -43,8 +46,6 @@ export default function Pokemon() {
           <PokemonTable
             headCells={headCells} 
             dataset={pokemon} 
-            loading={loading} 
-            setLoading={setLoading}
           />
         </Paper>
       </Grid>

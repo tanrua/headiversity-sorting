@@ -16,66 +16,66 @@ import QueryStats from '@mui/icons-material/QueryStats'
 
 export const mainListItems = (
   <React.Fragment>
-    <ListItemButton component={Link} to="/">
+    <ListItemButton component={Link} to='/'>
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
-      <ListItemText primary="Dashboard" />
+      <ListItemText primary='Dashboard' />
     </ListItemButton>
-    <ListItemButton component={Link} to="/pokemon">
+    <ListItemButton component={Link} to='/pokemon'>
       <ListItemIcon>
         <QueryStats />
       </ListItemIcon>
-      <ListItemText primary="Pokemon Stats" />
+      <ListItemText primary='Pokemon Stats' />
     </ListItemButton>
   </React.Fragment>
 )
 
 export const secondaryListItems = (
   <React.Fragment>
-    <ListSubheader component="div" inset>
+    <ListSubheader component='div' inset>
       Pokemon by Generation
     </ListSubheader>
-    <ListItemButton component={Link} to="/pokemon?gen=1">
+    <ListItemButton component={Link} to='/pokemon?gen=1'>
       <ListItemIcon>
         <LooksOne />
       </ListItemIcon>
-      <ListItemText primary="Gen 1" />
+      <ListItemText primary='Gen 1' />
     </ListItemButton>
 
-    <ListItemButton component={Link} to="/pokemon?gen=2">
+    <ListItemButton component={Link} to='/pokemon?gen=2'>
       <ListItemIcon>
         <LooksTwo />
       </ListItemIcon>
-      <ListItemText primary="Gen 2" />
+      <ListItemText primary='Gen 2' />
     </ListItemButton>
 
-    <ListItemButton component={Link} to="/pokemon?gen=3">
+    <ListItemButton component={Link} to='/pokemon?gen=3'>
       <ListItemIcon>
         <Looks3 />
       </ListItemIcon>
-      <ListItemText primary="Gen 3" />
+      <ListItemText primary='Gen 3' />
     </ListItemButton>
 
-    <ListItemButton component={Link} to="/pokemon?gen=4">
+    <ListItemButton component={Link} to='/pokemon?gen=4'>
       <ListItemIcon>
         <Looks4 />
       </ListItemIcon>
-      <ListItemText primary="Gen 4" />
+      <ListItemText primary='Gen 4' />
     </ListItemButton>
 
-    <ListItemButton component={Link} to="/pokemon?gen=5">
+    <ListItemButton component={Link} to='/pokemon?gen=5'>
       <ListItemIcon>
         <Looks5 />
       </ListItemIcon>
-      <ListItemText primary="Gen 5" />
+      <ListItemText primary='Gen 5' />
     </ListItemButton>
 
-    <ListItemButton component={Link} to="/pokemon?gen=6">
+    <ListItemButton component={Link} to='/pokemon?gen=6'>
       <ListItemIcon>
         <Looks6 />
       </ListItemIcon>
-      <ListItemText primary="Gen 6" />
+      <ListItemText primary='Gen 6' />
     </ListItemButton>
   </React.Fragment>
 )

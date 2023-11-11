@@ -8,6 +8,17 @@ class PokemonController {
 
     return response.status(200).json({ pokemon })
   }
+
+  async findByGeneration ({ params, response }) {
+    const gen = params.generation
+    if(!gen){
+      const pokemon = await Pokemon.all()
+      return response.status(200).json({ pokemon })
+    }
+    const pokemon = await Pokemon.query().where('generation', gen).fetch()
+
+    return response.status(200).json({ pokemon })
+  }
 }
 
 module.exports = PokemonController

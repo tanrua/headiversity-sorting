@@ -5,6 +5,12 @@ import Paper from '@mui/material/Paper'
 import axios from 'axios'
 import PokemonTable from '../table/PokemonTable'
 import SkeletonTable from '../table/SkeletonTable'
+import { useParams } from 'react-router-dom'
+import { API_BASE_URL, HEAD_CELLS } from '../../constants/pokemonTableConstants'
+
+const client = axios.create({
+  baseURL: API_BASE_URL
+})
 
 const headCells = [
   { id: 'id',               label: 'Pokedex #'},
@@ -19,19 +25,21 @@ const headCells = [
   { id: 'special_defense',  label: 'Sp.Def'},
 ];
 
-export default function Pokemon({
-  generation,
-  dataset
-}) {
-  const [pokemon, setpokemon] = React.useState(dataset)
+export default function PokemonByGeneration() {
+  const { generation } = useParams()
+  const [pokemon, setpokemon] = React.useState(null)
+  const [gen, setGen] = React.useState(null)
 
   React.useEffect(() => {
-      setpokemon(dataset)
-  }, [dataset])
+    client.get('/'+generation).then((response) => {
+      setpokemon(response.data.pokemon)
+      setGen(generation)
+    })
+  }, [generation])
 
-  if (!dataset) return (
+  if (!pokemon) return (
     <SkeletonTable
-      headCells={headCells}
+      headCells={HEAD_CELLS}
       skeletonRowCount={25}
     />
   )
@@ -41,8 +49,8 @@ export default function Pokemon({
       <Grid item xs={12}>
         <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
           <PokemonTable
-            key={generation}
-            headCells={headCells}
+            key={gen}
+            headCells={HEAD_CELLS} 
             dataset={pokemon} 
           />
         </Paper>

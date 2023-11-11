@@ -9,6 +9,9 @@ import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import '../table/PokemonTable.scss'
 
+EnhancedTableToolbar.propTypes = {
+  numSelected: PropTypes.number.isRequired,
+}
 
 export default function EnhancedTableToolbar(props) {
   const { numSelected } = props;
@@ -60,7 +63,3 @@ export default function EnhancedTableToolbar(props) {
     </Toolbar>
   );
 }
-
-EnhancedTableToolbar.propTypes = {
-  numSelected: PropTypes.number.isRequired,
-};

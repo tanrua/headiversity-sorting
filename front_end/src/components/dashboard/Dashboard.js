@@ -20,7 +20,8 @@ import NotificationsIcon from '@mui/icons-material/Notifications'
 import { mainListItems, secondaryListItems } from './listItems'
 
 import Welcome from '../welcome/Welcome'
-import Pokemon from '../pokemon/Pokemon'
+import PokemonFullSet from '../pokemon/PokemonFullSet'
+import PokemonByGeneration from '../pokemon/PokemonByGeneration'
 
 function Copyright(props) {
   return (
@@ -158,7 +159,8 @@ export default function Dashboard() {
           <Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}>
               <Routes>
                 <Route path='/' element={<Welcome />} />
-                <Route path='/pokemon' element={<Pokemon />} />
+                <Route path='/pokemon' element={<PokemonFullSet />} />
+                <Route path='/pokemon/:generation' element={<PokemonByGeneration />} />
               </Routes>
             <Copyright sx={{ pt: 4 }} />
           </Container>

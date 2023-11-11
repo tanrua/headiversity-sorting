@@ -13,6 +13,10 @@ import { Box, Skeleton, Checkbox } from '@mui/material';
 
 import '../table/PokemonTable.scss'
 
+function nullFunction() {
+
+}
+
 export default function SkeletonTable({
   headCells,
   skeletonRowCount
@@ -57,7 +61,7 @@ export default function SkeletonTable({
                     </TableCell>
                     {headCells.map((headCell, index) => {
                       return (
-                        <TableCell >
+                        <TableCell key={'cell-'+index}>
                           <Skeleton animation='wave' variant='text' />
                         </TableCell>
                       )
@@ -73,7 +77,9 @@ export default function SkeletonTable({
           component='div'
           count={skeletonRowCount}
           rowsPerPage={skeletonRowCount}
-          page={1}
+          page={0}
+          onPageChange={nullFunction}
+          onRowsPerPageChange={nullFunction}
         />
       </Paper>
     </Box>

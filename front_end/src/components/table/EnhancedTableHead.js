@@ -9,7 +9,7 @@ import Checkbox from '@mui/material/Checkbox';
 import { visuallyHidden } from '@mui/utils';
 
 EnhancedTableHead.propTypes = {
-  headCells: PropTypes.object.isRequired,
+  headCells: PropTypes.array.isRequired,
   numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
   onSelectAllClick: PropTypes.func.isRequired,

@@ -36,42 +36,42 @@ export const secondaryListItems = (
     <ListSubheader component='div' inset>
       Pokemon by Generation
     </ListSubheader>
-    <ListItemButton component={Link} to='/pokemon?gen=1'>
+    <ListItemButton component={Link} to='/pokemon/1'>
       <ListItemIcon>
         <LooksOne />
       </ListItemIcon>
       <ListItemText primary='Gen 1' />
     </ListItemButton>
 
-    <ListItemButton component={Link} to='/pokemon?gen=2'>
+    <ListItemButton component={Link} to='/pokemon/2'>
       <ListItemIcon>
         <LooksTwo />
       </ListItemIcon>
       <ListItemText primary='Gen 2' />
     </ListItemButton>
 
-    <ListItemButton component={Link} to='/pokemon?gen=3'>
+    <ListItemButton component={Link} to='/pokemon/3'>
       <ListItemIcon>
         <Looks3 />
       </ListItemIcon>
       <ListItemText primary='Gen 3' />
     </ListItemButton>
 
-    <ListItemButton component={Link} to='/pokemon?gen=4'>
+    <ListItemButton component={Link} to='/pokemon/4'>
       <ListItemIcon>
         <Looks4 />
       </ListItemIcon>
       <ListItemText primary='Gen 4' />
     </ListItemButton>
 
-    <ListItemButton component={Link} to='/pokemon?gen=5'>
+    <ListItemButton component={Link} to='/pokemon/5'>
       <ListItemIcon>
         <Looks5 />
       </ListItemIcon>
       <ListItemText primary='Gen 5' />
     </ListItemButton>
 
-    <ListItemButton component={Link} to='/pokemon?gen=6'>
+    <ListItemButton component={Link} to='/pokemon/6'>
       <ListItemIcon>
         <Looks6 />
       </ListItemIcon>

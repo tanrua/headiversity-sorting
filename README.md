@@ -14,11 +14,15 @@ Then set up a DB and user for the backend
 psql -h localhost -p 5432 -U postgres -c "CREATE DATABASE headiversity"
 ```
 
+We'll also want a persisted Redis docker container for our cache. We'll persist snapshots every 5m using the `--save` flag
+```bash
+docker run -rm -P -p 127.0.0.1:6379:6379 --name head-redis -d redis redis-server --save 300 1 --loglevel warning
+```
+
 This Adonis project is configured to use Postgresql, and therefor is dependent on the pg npm package. Make sure this gets installed, you might even want to do so with the global tag
 ```bash
 npm install -g pg
 ```
-
 
 ### Back End
 Navigate to the `back_end` directory and install all the node dependencies.

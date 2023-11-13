@@ -31,7 +31,7 @@ export default function PokemonByGeneration() {
   const [gen, setGen] = React.useState(null)
 
   React.useEffect(() => {
-    client.get('/'+generation).then((response) => {
+    client.get('/gen/'+generation).then((response) => {
       setpokemon(response.data.pokemon)
       setGen(generation)
     })

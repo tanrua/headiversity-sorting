@@ -148,7 +148,7 @@ export default function PokemonTable({
                     <TableCell>{row.sp_attack}</TableCell>
                     <TableCell>{row.sp_defense}</TableCell>
                   </TableRow>
-                );
+                )
               })}
               {emptyRows > 0 && (
                 <TableRow

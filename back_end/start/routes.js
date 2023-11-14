@@ -20,10 +20,8 @@ Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
 
-Route.post('api/orders', 'OrderController.store')
-Route.get('api/orders', 'OrderController.index')
-Route.delete('api/orders/:id', 'OrderController.delete')
+Route.get('api/pokemon', 'PokemonController.index')
 
-// Route.get('api/pokemon', 'PokemonController.index')
-Route.get('api/pokemon/gen/:generation?', 'PokemonController.findByGeneration')
-Route.get('api/pokemon/chart', 'PokemonController.findChartable')
+// Given more time and a re-do with the proper version of Adonis I could actually get something done with auth
+Route.get('api/pokemon/gen/:generation?', 'PokemonController.findByGeneration').middleware('guest')
+Route.get('api/pokemon/chart', 'PokemonController.findChartable').middleware('guest')

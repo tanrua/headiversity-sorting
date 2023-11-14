@@ -1,5 +1,17 @@
 # headiversity-sorting
-Take home project for Headiveristy hiring process
+Take home project for Headiveristy hiring process.
+
+> [!IMPORTANT]  
+> I discovered after a week that I used a much older version of Adonis.js than intended. In an attempt to not trip up over typescript given the short timeline, I ended up following a guide on tying Material UI and Adonis together using plain old Javascript. Wamp Wamp =(.
+> I discovered this while attempting to implement a redis-backed cache, which is still left in a half-done state. I also decided to skip user login because it just isn't interesting at this scale and web security patters are always particular to the dev-team itself. There are a few other knock-on effects of the version problem and you can see some code commented out to show where I ran up against them.
+> I hope it still is satisfactory. -S
+
+Dev Evironment
+- Ubuntu 20.04
+- Docker version 24.0.7
+- Node version 20.9.0
+- NPM version 10.2.3
+
 
 ## Setup
 The following commands are inteded to be run from the `root level` of the project where this README is located, unless noted in the Back/Front end sections.
@@ -13,6 +25,9 @@ Then set up a DB and user for the backend
 ```bash
 psql -h localhost -p 5432 -U postgres -c "CREATE DATABASE headiversity"
 ```
+
+> [!IMPORTANT]
+> Redis is not actually used after all, you can skip this step
 
 We'll also want a persisted Redis docker container for our cache. We'll persist snapshots every 5m using the `--save` flag
 ```bash

@@ -41,7 +41,7 @@ class PokemonController {
   }
 
   async findChartable ({ request, response }) {
-    // This validation probably doesn't work doe to the adonis version problems discovered.
+    // This validation probably doesn't work due to the adonis version problems discovered.
 
     // const chartableSchema = Validator.schema.create({
     //   type: Validator.schema.enum(Object.values(TYPE_ENUM)),
@@ -58,7 +58,7 @@ class PokemonController {
 
     let pokemonQuery = Pokemon.query()
 
-    // We do not like this query string validation. No we do not! You can do better.... but it works given even bigger root problems
+    // We do not like this query validation. No we do not! You can do better.... but it works given even bigger root problems
     if (type){
       pokemonQuery = pokemonQuery.where('type', type)
     }

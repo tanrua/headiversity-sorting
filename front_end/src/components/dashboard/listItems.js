@@ -26,7 +26,7 @@ export const mainListItems = (
       <ListItemIcon>
         <QueryStats />
       </ListItemIcon>
-      <ListItemText primary='Pokemon Stats' />
+      <ListItemText primary='Pokemon List' />
     </ListItemButton>
   </React.Fragment>
 )

@@ -26,7 +26,32 @@ export default class PokemonController {
       }
     })
 
-    const pokemon = await Pokemon.findBy('generation', validPayload.generation)
+    const pokemon = await Pokemon.query().where('generation', validPayload.generation)
+
+    return pokemon
+  }
+
+  public async showByType({ params, request }: HttpContextContract) {
+    const byTypeSchema = Schema.create({
+      type: Schema.string([
+        rules.exists({
+        table: 'pokemon',
+        column: 'type'
+        })
+      ])
+     })
+
+    const validPayload = await request.validate({
+      schema: byTypeSchema,
+      messages: {
+        exists: "You must pick a valid type",
+      },
+      data: {
+        type: params.type
+      }
+    })
+
+    const pokemon = await Pokemon.query().where('type', validPayload.type)
 
     return pokemon
   }

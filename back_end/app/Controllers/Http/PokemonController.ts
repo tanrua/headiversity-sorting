@@ -19,7 +19,7 @@ export default class PokemonController {
 
     const pokemon = await Pokemon.query()
     .paginate(validPayload.page, validPayload.limit)
-    
+
     return pokemon
   }
 

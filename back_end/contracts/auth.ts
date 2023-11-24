@@ -5,7 +5,7 @@
  * file.
  */
 
-import HeadiversityToken from 'App/Models/HeadiversityToken'
+import User from 'App/Models/User'
 
 declare module '@ioc:Adonis/Addons/Auth' {
   /*
@@ -34,8 +34,8 @@ declare module '@ioc:Adonis/Addons/Auth' {
     |
     */
     user: {
-      implementation: LucidProviderContract<typeof HeadiversityToken>
-      config: LucidProviderConfig<typeof HeadiversityToken>
+      implementation: LucidProviderContract<typeof User>
+      config: LucidProviderConfig<typeof User>
     }
   }
 

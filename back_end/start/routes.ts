@@ -9,14 +9,14 @@ Route.get('api/pokemon/', async (ctx) => {
     'App/Controllers/Http/PokemonController'
   )
   return new PokemonController().index(ctx)
-})
+}).middleware('auth')
 
 Route.get('api/pokemon/gen/:generation', async (ctx) => {
   const { default: PokemonController } = await import(
     'App/Controllers/Http/PokemonController'
   )
   return new PokemonController().showByGeneration(ctx)
-})
+}).middleware('auth')
 
 Route.get('api/pokemon/type/:type', async (ctx) => {
   const { default: PokemonController } = await import(
@@ -30,7 +30,7 @@ Route.get('api/pokemon/chart', async (ctx) => {
     'App/Controllers/Http/PokemonController'
   )
   // return new PokemonController().findBest(ctx)
-})
+}).middleware('auth')
 
 Route.post('login', async ({ auth, request, response }) => {
   const email = request.input('email')

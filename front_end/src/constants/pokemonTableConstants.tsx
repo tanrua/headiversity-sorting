@@ -19,8 +19,8 @@ export const HEAD_CELLS = [
   { id: 'special_defense',  label: 'Sp.Def'},
 ]
 
-export const TYPE_ENUM = [
-  "bug",
+export enum TYPE_ENUM {
+  "bug" = 1,
   "dark",
   "dragon",
   "electric",
@@ -38,4 +38,4 @@ export const TYPE_ENUM = [
   "rock",
   "steel",
   "water"
-]
+}

@@ -1,0 +1,40 @@
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+.rounded-cell {
+  @include border-radius(1em);
+}
+
+.type {
+  &-BUG { background-color: #A8B820; }
+  &-DARK { background-color: #705848; }
+  &-DRAGON { background-color: #7038F8; }
+  &-ELECTRIC { background-color: #F8D030; }
+  &-FAIRY { background-color: #EE99AC; }
+  &-FIGHTING { background-color: #C03028; }
+  &-FIRE { background-color: #F08030; }
+  &-FLYING { background-color: #A890F0; }
+  &-GHOST { background-color: #705898; }
+  &-GRASS { background-color: #78C850; }
+  &-GROUND { background-color: #E0C068; }
+  &-ICE { background-color: #98D8D8; }
+  &-NORMAL { background-color: #A8A878; }
+  &-POISON { background-color: #A040A0; }
+  &-PSYCHIC { background-color: #F85888; }
+  &-ROCK { background-color: #B8A038; }
+  &-STEEL { background-color: #B8B8D0; }
+  &-WATER { background-color: #6890F0; }
+}
+
+.legendary {
+  background-color: #fff9c8;
+}
+
+p.MuiTablePagination-selectLabel, 
+p.MuiTablePagination-displayedRows {
+  margin-top: 1em;
+}

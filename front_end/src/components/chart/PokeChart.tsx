@@ -18,10 +18,12 @@ export default function PokeChart( props:{
   const [pokemon, setpokemon] = React.useState([])
 
   React.useEffect(() => {
-    client.get('/chart?type='+props.type+'&sorter='+props.sortStat+'&count='+props.count).then((response) => {
-      setpokemon(response.data.pokemon)
+    client.get('/chart?type='+props.type+'&stat='+props.sortStat+'&limit='+props.count).then((response) => {
+      setpokemon(response.data.data)
     })
   }, [props.sortStat, props.count])
+
+  console.log(pokemon)
 
   return (
     <React.Fragment>

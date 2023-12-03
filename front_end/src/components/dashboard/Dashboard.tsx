@@ -21,74 +21,25 @@ import { mainListItems, secondaryListItems } from './listItems'
 
 import Copyright from './Copyright'
 import Welcome from '../welcome/Welcome'
+import Signin from '../auth/Signin'
 import PokemonFullSet from '../pokemon/PokemonFullSet'
 import PokemonByGeneration from '../pokemon/PokemonByGeneration'
 import { AppBar, Drawer } from './StyledElements'
 
 const drawerWidth = 240
-
-//Adding open as a property in addition to the MUI standards one. Without the typing on the styled() function, this will fail
-// type AppBarProps = {
-//   open: boolean
-// }
-
-// const AppBar = styled(MuiAppBar, {
-//   shouldForwardProp: (prop) => prop !== 'open',
-// })<AppBarProps>(({ theme, open }) => ({
-//   zIndex: theme.zIndex.drawer + 1,
-//   transition: theme.transitions.create(['width', 'margin'], {
-//     easing: theme.transitions.easing.sharp,
-//     duration: theme.transitions.duration.leavingScreen,
-//   }),
-//   ...(open && {
-//     marginLeft: drawerWidth,
-//     width: `calc(100% - ${drawerWidth}px)`,
-//     transition: theme.transitions.create(['width', 'margin'], {
-//       easing: theme.transitions.easing.sharp,
-//       duration: theme.transitions.duration.enteringScreen,
-//     }),
-//   }),
-// }))
-
-// const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-//   ({ theme, open }) => ({
-//     '& .MuiDrawer-paper': {
-//       position: 'relative',
-//       whiteSpace: 'nowrap',
-//       width: drawerWidth,
-//       transition: theme.transitions.create('width', {
-//         easing: theme.transitions.easing.sharp,
-//         duration: theme.transitions.duration.enteringScreen,
-//       }),
-//       boxSizing: 'border-box',
-//       ...(!open && {
-//         overflowX: 'hidden',
-//         transition: theme.transitions.create('width', {
-//           easing: theme.transitions.easing.sharp,
-//           duration: theme.transitions.duration.leavingScreen,
-//         }),
-//         width: theme.spacing(7),
-//         [theme.breakpoints.up('sm')]: {
-//           width: theme.spacing(9),
-//         },
-//       }),
-//     },
-//   }),
-// )
-
 const defaultTheme = createTheme()
 
 export default function Dashboard() {
-  const [open, setOpen] = React.useState(true)
+  const [isOpen, setOpen] = React.useState(true)
   const toggleDrawer = () => {
-    setOpen(!open)
+    setOpen(!isOpen)
   }
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
-        <AppBar position='absolute' open={open} drawerWidth={drawerWidth}>
+        <AppBar position='absolute' open={isOpen} drawerWidth={drawerWidth}>
           <Toolbar
             sx={{
               pr: '24px', // keep right padding when drawer closed
@@ -101,7 +52,7 @@ export default function Dashboard() {
               onClick={toggleDrawer}
               sx={{
                 marginRight: '36px',
-                ...(open && { display: 'none' }),
+                ...(isOpen && { display: 'none' }),
               }}
             >
               <MenuIcon />
@@ -117,7 +68,7 @@ export default function Dashboard() {
             </Typography>
           </Toolbar>
         </AppBar>
-        <Drawer variant='permanent' open={open} drawerWidth={drawerWidth}>
+        <Drawer variant='permanent' open={isOpen} drawerWidth={drawerWidth}>
           <Toolbar
             sx={{
               display: 'flex',
@@ -153,6 +104,7 @@ export default function Dashboard() {
           <Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}>
               <Routes>
                 <Route path='/' element={<Welcome />} />
+                <Route path='/signin' element={<Signin />} />
                 <Route path='/pokemon' element={<PokemonFullSet />} />
                 <Route path='/pokemon/:generation' element={<PokemonByGeneration />} />
               </Routes>

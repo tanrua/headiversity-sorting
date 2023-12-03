@@ -35,7 +35,7 @@ export default function BestInShow() {
         {
           Object.keys(TYPE_ENUM).map((type) => {
             return (
-              <Grid key={'grid-'+type} item xs={12} md={12} lg={10}>
+              <Grid key={'grid-'+type} xs={12} md={12} lg={8}>
                 <Paper
                   sx={{
                     p: 2,

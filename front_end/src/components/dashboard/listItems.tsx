@@ -22,6 +22,12 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary='Dashboard' />
     </ListItemButton>
+    <ListItemButton component={Link} to='/signin'>
+      <ListItemIcon>
+        <DashboardIcon />
+      </ListItemIcon>
+      <ListItemText primary='Sign In' />
+    </ListItemButton>
     <ListItemButton component={Link} to='/pokemon'>
       <ListItemIcon>
         <QueryStats />

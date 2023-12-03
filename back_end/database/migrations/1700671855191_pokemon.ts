@@ -1,9 +1,14 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
+import Pokemon from 'App/Models/Pokemon'
+
 export default class extends BaseSchema {
   protected tableName = 'pokemon'
 
-  private TYPE_ENUM_VALUES = [
+  //TODO: 
+  //private types: string[] = Pokemon.TYPE_VALUES
+
+  private types = [
     "bug",
     "dark",
     "dragon",
@@ -29,13 +34,13 @@ export default class extends BaseSchema {
       table.increments('id')
 
       table.string('name').notNullable()
-      table.enu('type', this.TYPE_ENUM_VALUES, {
+      table.enu('type', this.types, {
         useNative: true,
         enumName: 'pokemon_type_enum',
         existingType: false,
         schemaName: 'public'
       }).notNullable()
-      table.enu('sub_type', this.TYPE_ENUM_VALUES, {
+      table.enu('sub_type', this.types, {
         useNative: true,
         enumName: 'pokemon_type_enum',
         existingType: true, // we already created the enum in the previous step

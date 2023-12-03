@@ -29,7 +29,7 @@ Route.get('api/pokemon/chart', async (ctx) => {
   const { default: PokemonController } = await import(
     'App/Controllers/Http/PokemonController'
   )
-  // return new PokemonController().findBest(ctx)
+  return new PokemonController().showByTypeAndStat(ctx)
 })
 
 Route.post('login', async ({ auth, request, response }) => {

@@ -32,7 +32,7 @@ Route.get('api/pokemon/chart', async (ctx) => {
   return new PokemonController().showByTypeAndStat(ctx)
 })
 
-Route.post('login', async ({ auth, request, response }) => {
+Route.post('api/auth/signin', async ({ auth, request, response }) => {
   const email = request.input('email')
   const password = request.input('password')
 

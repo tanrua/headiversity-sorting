@@ -1,6 +1,5 @@
 
 import * as React from 'react'
-import { forIn } from 'lodash'
 import { Grid, Paper, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@mui/material'
 import PokeChart from '../chart/PokeChart'
 import { TYPE_ENUM, HEAD_CELLS } from '../../constants/pokemonTableConstants'

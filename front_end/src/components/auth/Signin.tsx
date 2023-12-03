@@ -1,40 +1,36 @@
 
 import * as React from 'react'
+import axios from 'axios';
 import TextField from '@mui/material/TextField'
 import Button  from '@mui/material/Button'
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card'
+import CardHeader from '@mui/material/CardHeader'
+import CardContent from '@mui/material/CardContent'
+import CardActions from '@mui/material/CardActions'
+import Grid from '@mui/material/Grid'
+import { AUTH_BASE_URL } from '../../constants/pokemonTableConstants'
 
-
+const client = axios.create({
+  baseURL: AUTH_BASE_URL
+})
 
 export default function Signin() {
-  type Auth = {
-    username: string
-    password:  string
-    isButtonDisabled: boolean
-    helperText: string
-    isError: boolean
-  }
-
-  const [username, setUsername] = React.useState('null')
+  const [email, setEmail] = React.useState('null')
   const [password, setPassword] = React.useState('')
   const [isError, setError] = React.useState(false)
   const [helperText, setHelperText] = React.useState("Sign in Successfull")
   const [isButtonDisabled, setButtonDisabled] = React.useState(true)
 
   React.useEffect(() => {
-    if (username.trim() && password.trim()) {
+    if (email.trim() && password.trim()) {
       setButtonDisabled(false)
     } else {
       setButtonDisabled(true)
     }
-  }, [username, password]);
+  }, [email, password]);
 
   const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUsername(event.target.value)
+    setEmail(event.target.value)
   }
 
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +38,10 @@ export default function Signin() {
   }
 
   const handleSignin = () => {
-    console.log("TODO: Implement handleSignin")
+    console.log("signing in")
+    client.post('/signin?email='+email+'&password='+password).then((response) => {
+      console.log(response)
+    })
   }
 
   return (

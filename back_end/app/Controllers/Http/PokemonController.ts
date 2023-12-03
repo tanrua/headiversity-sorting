@@ -1,12 +1,13 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { rules, schema as Schema } from '@ioc:Adonis/Core/Validator'
+import { ModelPaginatorContract } from '@ioc:Adonis/Lucid/Orm'
 import Pokemon from 'App/Models/Pokemon'
 
 export default class PokemonController {
-  private DEFAULT_PAGE = 1
-  private DEFAULT_LIMIT = 200
+  private DEFAULT_PAGE:number = 1
+  private DEFAULT_LIMIT:number = 200
 
-  public async index({ request }: HttpContextContract) {
+  public async index({ request }: HttpContextContract): Promise<ModelPaginatorContract<Pokemon>> {
     const allPokemonSchema = Schema.create({
       page: Schema.number(),
       limit: Schema.number()
@@ -26,7 +27,7 @@ export default class PokemonController {
     return pokemon
   }
 
-  public async showByGeneration({ params, request }: HttpContextContract) {
+  public async showByGeneration({ params, request }: HttpContextContract): Promise<ModelPaginatorContract<Pokemon>> {
     const byGenerationSchema = Schema.create({
       generation: Schema.number([
         rules.unsigned(),
@@ -55,7 +56,7 @@ export default class PokemonController {
     return pokemon
   }
 
-  public async showByType({ params, request }: HttpContextContract) {
+  public async showByType({ params, request }: HttpContextContract): Promise<ModelPaginatorContract<Pokemon>> {
     const byTypeSchema = Schema.create({
       type: Schema.string([
         rules.exists({

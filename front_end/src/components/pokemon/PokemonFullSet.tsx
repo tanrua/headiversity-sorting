@@ -13,17 +13,16 @@ const client = axios.create({
 })
 
 export default function PokemonFullSet() {
-  const [pokemon, setpokemon] = React.useState(null)
+  const [pokemon, setpokemon] = React.useState([])
 
   React.useEffect(() => {
-    client.get('/gen/').then((response) => {
-      setpokemon(response.data.pokemon)
+    client.get('').then((response) => {
+      setpokemon(response.data.data)
     })
   }, [])
 
-  if (!pokemon) return (
+  if (!pokemon || pokemon.length == 0) return (
     <SkeletonTable
-      headCells={HEAD_CELLS}
       skeletonRowCount={25}
     />
   )

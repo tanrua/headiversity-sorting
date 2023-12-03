@@ -15,13 +15,13 @@ import getComparator from '../../utils/TableUtils'
 import { HeadCellProps } from '../../constants/pokemonTableConstants'
 import '../table/PokemonTable.scss'
 
-export default function PokemonTable(
+export default function PokemonTable(params:{
   headCells: any,
-  dataset: any,
-) {
+  dataset: any[],
+}) {
   const [order, setOrder] = React.useState<'asc'|'desc'>('asc')
   const [orderBy, setOrderBy] = React.useState<string>('id')
-  const [selected, setSelected] = React.useState<any>([]) //TODO: Figure out a pokemon type somewhere? There must be a best practice for this
+  const [selected, setSelected] = React.useState<any>([]) //TODO: Figure out a pokemon type? There must be a best practice for this
   const [page, setPage] = React.useState<number>(0)
   const [rowsPerPage, setRowsPerPage] = React.useState(25)
 
@@ -36,7 +36,7 @@ export default function PokemonTable(
   }) => {
     const { target } = event
     if (target.checked) {
-      const newSelected = dataset.map((n: any) => n.id);
+      const newSelected = params.dataset.map((n: any) => n.id);
       setSelected(newSelected);
       return;
     }
@@ -80,16 +80,20 @@ export default function PokemonTable(
 
   // Avoid a layout jump when reaching the last page with empty dataset.
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - dataset.length) : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - params.dataset.length) : 0;
 
   const visibleRows = React.useMemo(
     () =>
-      dataset.slice().sort(getComparator(order, orderBy)).slice(
+      params.dataset.slice().sort(getComparator(order, orderBy)).slice(
         page * rowsPerPage,
         page * rowsPerPage + rowsPerPage,
       ),
     [order, orderBy, page, rowsPerPage],
-  );
+  )
+
+  console.log("visible rows")
+  console.log(order + " : " + orderBy)
+  console.log(params.dataset.slice().sort(getComparator(order, orderBy)))
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -102,13 +106,13 @@ export default function PokemonTable(
             size='small'
           >
             <EnhancedTableHead
-              headCells={headCells}
+              headCells={params.headCells}
               numSelected={selected.length}
               order={order}
               orderBy={orderBy}
               onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
-              rowCount={dataset.length}
+              rowCount={params.dataset.length}
             />
             <TableBody>
               {visibleRows.map((row: any, index: number) => {
@@ -174,7 +178,7 @@ export default function PokemonTable(
         <TablePagination
           rowsPerPageOptions={[5, 10, 25, 50, 100]}
           component='div'
-          count={dataset.length}
+          count={params.dataset.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

@@ -8,29 +8,29 @@ const client = axios.create({
   baseURL: API_BASE_URL
 })
 
-export default function PokeChart(
+export default function PokeChart( props:{
   type: string,
   count: number,
   sortStat: string
-) {
+}) {
   const theme = useTheme()
 
   const [pokemon, setpokemon] = React.useState([])
 
   React.useEffect(() => {
-    client.get('/chart?type='+type+'&sorter='+sortStat+'&count='+count).then((response) => {
+    client.get('/chart?type='+props.type+'&sorter='+props.sortStat+'&count='+props.count).then((response) => {
       setpokemon(response.data.pokemon)
     })
-  }, [sortStat, count])
+  }, [props.sortStat, props.count])
 
   return (
     <React.Fragment>
       <Typography component='h2' variant='h6' color='primary' gutterBottom>
-        Top {count} Best for {type} type
+        Top {props.count} Best for {props.type} type
       </Typography>
       <ResponsiveContainer>
         <BarChart
-          key={'pokechart-'+type}
+          key={'pokechart-'+props.type}
           data={pokemon}
           margin={{
             top: 16,

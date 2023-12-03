@@ -12,13 +12,13 @@ import Paper from '@mui/material/Paper';
 import { Box, Skeleton, Checkbox } from '@mui/material';
 
 import '../table/PokemonTable.scss'
-import { HeadCellProps } from '../../constants/pokemonTableConstants';
+import { HEAD_CELLS, HeadCellProps } from '../../constants/pokemonTableConstants';
 
 function nullFunction() {}
 
-export default function SkeletonTable(
-  headCells: any,
+export default function SkeletonTable( props: {
   skeletonRowCount: number
+}
 ) {
 
   return (
@@ -36,7 +36,7 @@ export default function SkeletonTable(
                   <Checkbox color='primary' />
                 </TableCell>
 
-                {headCells.map((headCell: HeadCellProps) => (
+                {HEAD_CELLS.map((headCell: HeadCellProps) => (
                   <TableCell
                     key={headCell.id}
                     padding='none'
@@ -58,7 +58,7 @@ export default function SkeletonTable(
                         color='primary'
                       />
                     </TableCell>
-                    {headCells.map((headCell: HeadCellProps, index: number) => {
+                    {HEAD_CELLS.map((headCell: HeadCellProps, index: number) => {
                       return (
                         <TableCell key={'cell-'+index}>
                           <Skeleton animation='wave' variant='text' />
@@ -74,8 +74,8 @@ export default function SkeletonTable(
         <TablePagination
           rowsPerPageOptions={[5, 10, 25, 50, 100]}
           component='div'
-          count={skeletonRowCount}
-          rowsPerPage={skeletonRowCount}
+          count={props.skeletonRowCount}
+          rowsPerPage={props.skeletonRowCount}
           page={0}
           onPageChange={nullFunction}
           onRowsPerPageChange={nullFunction}

@@ -18,19 +18,18 @@ type PokeParams = {
 
 export default function PokemonByGeneration() {
   const { generation } = useParams<PokeParams>()
-  const [pokemon, setpokemon] = React.useState(null)
+  const [pokemon, setpokemon] = React.useState([])
   const [gen, setGen] = React.useState<string>('')
 
   React.useEffect(() => {
     client.get('/gen/'+generation!).then((response) => {
-      setpokemon(response.data.pokemon)
+      setpokemon(response.data.data)
       setGen(generation!)
     })
   }, [generation!])
 
-  if (!pokemon) return (
+  if (!pokemon || pokemon.length == 0) return (
     <SkeletonTable
-      headCells={HEAD_CELLS}
       skeletonRowCount={25}
     />
   )

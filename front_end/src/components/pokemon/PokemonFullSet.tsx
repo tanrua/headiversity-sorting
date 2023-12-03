@@ -16,7 +16,7 @@ export default function PokemonFullSet() {
   const [pokemon, setpokemon] = React.useState([])
 
   React.useEffect(() => {
-    client.get('').then((response) => {
+    client.get('?limit=1000').then((response) => {
       setpokemon(response.data.data)
     })
   }, [])

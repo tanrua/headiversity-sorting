@@ -1,13 +1,13 @@
 import * as React from 'react'
-import Box from '@mui/material/Box';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import Checkbox from '@mui/material/Checkbox';
+import Box from '@mui/material/Box'
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TableContainer from '@mui/material/TableContainer'
+import TablePagination from '@mui/material/TablePagination'
+import TableRow from '@mui/material/TableRow'
+import Paper from '@mui/material/Paper'
+import Checkbox from '@mui/material/Checkbox'
 
 import EnhancedTableHead from './EnhancedTableHead'
 import EnhancedTableToolbar from './EnhancedTableToolbar'
@@ -26,61 +26,61 @@ export default function PokemonTable(params:{
   const [rowsPerPage, setRowsPerPage] = React.useState(25)
 
   const handleRequestSort = (event: Event, property: string) => {
-    const isAsc = orderBy === property && order === 'asc';
-    setOrder(isAsc ? 'desc' : 'asc');
-    setOrderBy(property);
-  };
+    const isAsc = orderBy === property && order === 'asc'
+    setOrder(isAsc ? 'desc' : 'asc')
+    setOrderBy(property)
+  }
 
   const handleSelectAllClick = (event: Event & {
     target: HTMLInputElement
   }) => {
     const { target } = event
     if (target.checked) {
-      const newSelected = params.dataset.map((n: any) => n.id);
-      setSelected(newSelected);
-      return;
+      const newSelected = params.dataset.map((n: any) => n.id)
+      setSelected(newSelected)
+      return
     }
-    setSelected([]);
+    setSelected([])
   }
 
   const handleClick = (id: number) => {
-    const selectedIndex = selected.indexOf(id);
-    let newSelected:any[] = [];
+    const selectedIndex = selected.indexOf(id)
+    let newSelected:any[] = []
 
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, id);
+      newSelected = newSelected.concat(selected, id)
     } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
+      newSelected = newSelected.concat(selected.slice(1))
     } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
+      newSelected = newSelected.concat(selected.slice(0, -1))
     } else if (selectedIndex > 0) {
       newSelected = newSelected.concat(
         selected.slice(0, selectedIndex),
         selected.slice(selectedIndex + 1),
-      );
+      )
     }
-    setSelected(newSelected);
-  };
+    setSelected(newSelected)
+  }
 
   const handleChangePage = (
     event: React.MouseEvent<HTMLButtonElement> | null, 
     newPage: number
   ) => {
-    setPage(newPage);
-  };
+    setPage(newPage)
+  }
 
   const handleChangeRowsPerPage = ( 
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> 
   ) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
+    setRowsPerPage(parseInt(event.target.value, 10))
+    setPage(0)
+  }
 
-  const isSelected = (id: number) => selected.indexOf(id) !== -1;
+  const isSelected = (id: number) => selected.indexOf(id) !== -1
 
   // Avoid a layout jump when reaching the last page with empty dataset.
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - params.dataset.length) : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - params.dataset.length) : 0
 
   const visibleRows = React.useMemo(
     () =>
@@ -112,8 +112,8 @@ export default function PokemonTable(params:{
             />
             <TableBody>
               {visibleRows.map((row: any, index: number) => {
-                const isItemSelected = isSelected(row.id);
-                const labelId = `enhanced-table-checkbox-${index}`;
+                const isItemSelected = isSelected(row.id)
+                const labelId = `enhanced-table-checkbox-${index}`
 
                 return (
                   <TableRow
@@ -182,5 +182,5 @@ export default function PokemonTable(params:{
         />
       </Paper>
     </Box>
-  );
+  )
 }

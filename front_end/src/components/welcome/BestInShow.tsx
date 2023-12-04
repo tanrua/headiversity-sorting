@@ -11,7 +11,7 @@ export default function BestInShow(props:{
   const [displayCount, setDisplayCount] = React.useState(10)
 
   const handleChangeSortStat = (event: React.ChangeEvent<HTMLInputElement>, value: string) => {
-    setSortStat(value);
+    setSortStat(value)
   }
 
   return (

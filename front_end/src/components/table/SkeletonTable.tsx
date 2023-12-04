@@ -1,18 +1,18 @@
 import * as React from 'react'
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TablePagination from '@mui/material/TablePagination';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import TableSortLabel from '@mui/material/TableSortLabel';
-import Paper from '@mui/material/Paper';
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TableContainer from '@mui/material/TableContainer'
+import TablePagination from '@mui/material/TablePagination'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
+import TableSortLabel from '@mui/material/TableSortLabel'
+import Paper from '@mui/material/Paper'
 
-import { Box, Skeleton, Checkbox } from '@mui/material';
+import { Box, Skeleton, Checkbox } from '@mui/material'
 
 import '../table/PokemonTable.scss'
-import { HEAD_CELLS, HeadCellProps } from '../../constants/pokemonTableConstants';
+import { HEAD_CELLS, HeadCellProps } from '../../constants/pokemonTableConstants'
 
 function nullFunction() {}
 
@@ -66,7 +66,7 @@ export default function SkeletonTable( props: {
                       )
                     })}
                 </TableRow>
-                );
+                )
               })}
             </TableBody>
           </Table>
@@ -82,5 +82,5 @@ export default function SkeletonTable( props: {
         />
       </Paper>
     </Box>
-  );
+  )
 }

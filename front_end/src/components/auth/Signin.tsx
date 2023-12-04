@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import axios from 'axios';
+import axios from 'axios'
 import TextField from '@mui/material/TextField'
 import Button  from '@mui/material/Button'
 import Card from '@mui/material/Card'
@@ -8,7 +8,7 @@ import CardContent from '@mui/material/CardContent'
 import CardActions from '@mui/material/CardActions'
 import Grid from '@mui/material/Grid'
 import { AUTH_BASE_URL } from '../../constants/pokemonTableConstants'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
 const client = axios.create({
   baseURL: AUTH_BASE_URL
@@ -32,7 +32,7 @@ export default function Signin(props:{
     } else {
       setButtonDisabled(true)
     }
-  }, [email, password]);
+  }, [email, password])
 
   const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value)

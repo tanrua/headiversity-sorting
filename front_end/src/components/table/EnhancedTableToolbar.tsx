@@ -12,7 +12,7 @@ type TableToolbarProps = {
 }
 
 export default function EnhancedTableToolbar(props: TableToolbarProps) {
-  const { numSelected } = props;
+  const { numSelected } = props
 
   return (
     <Toolbar
@@ -59,5 +59,5 @@ export default function EnhancedTableToolbar(props: TableToolbarProps) {
         </Tooltip>
       )}
     </Toolbar>
-  );
+  )
 }

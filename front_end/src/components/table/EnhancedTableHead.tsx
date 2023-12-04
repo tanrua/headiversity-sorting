@@ -39,11 +39,11 @@ export default function EnhancedTableHead(props: TableHeadProps) {
     numSelected,
     rowCount,
     onRequestSort
-  } = props;
+  } = props
 
   const createSortHandler = (property: any) => (event: any) => {
-    onRequestSort(event, property);
-  };
+    onRequestSort(event, property)
+  }
 
   return (
     <TableHead>
@@ -85,5 +85,5 @@ export default function EnhancedTableHead(props: TableHeadProps) {
         ))}
       </TableRow>
     </TableHead>
-  );
+  )
 }

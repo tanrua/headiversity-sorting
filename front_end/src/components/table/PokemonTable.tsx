@@ -91,10 +91,6 @@ export default function PokemonTable(params:{
     [order, orderBy, page, rowsPerPage],
   )
 
-  console.log("visible rows")
-  console.log(order + " : " + orderBy)
-  console.log(params.dataset.slice().sort(getComparator(order, orderBy)))
-
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>

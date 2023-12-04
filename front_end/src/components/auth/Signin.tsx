@@ -40,13 +40,11 @@ export default function Signin(props:{
   }
 
   const handleSignin = () => {
-    console.log("signing in")
     client.post('/signin', {
       email: email,
       password: password
     }
     ).then((response) => {
-      console.log(response)
       props.setToken(response.data.token)
     })
   }

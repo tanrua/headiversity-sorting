@@ -26,8 +26,6 @@ export default function PokeChart(props:{
     })
   }, [props.sortStat, props.count])
 
-  console.log(pokemon)
-
   return (
     <Fragment>
       <Typography component='h2' variant='h6' color='primary' gutterBottom>

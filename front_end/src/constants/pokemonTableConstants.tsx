@@ -1,5 +1,5 @@
-export const API_BASE_URL = 'http://localhost:3333/api/pokemon'
-export const AUTH_BASE_URL = 'http://localhost:3333/api/auth'
+export const API_BASE_URL = 'https://localhost:3333/api/pokemon'
+export const AUTH_BASE_URL = 'https://localhost:3333/api/auth'
 
 export type HeadCellProps = {
   id: string,

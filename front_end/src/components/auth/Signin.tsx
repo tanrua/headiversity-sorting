@@ -8,6 +8,7 @@ import CardContent from '@mui/material/CardContent'
 import CardActions from '@mui/material/CardActions'
 import Grid from '@mui/material/Grid'
 import { AUTH_BASE_URL } from '../../constants/pokemonTableConstants'
+import { useNavigate } from 'react-router-dom';
 
 const client = axios.create({
   baseURL: AUTH_BASE_URL
@@ -22,6 +23,8 @@ export default function Signin(props:{
   const [isError, setError] = useState(false)
   const [helperText, setHelperText] = useState("Sign in Successfull")
   const [isButtonDisabled, setButtonDisabled] = useState(true)
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (email.trim() && password.trim()) {
@@ -46,6 +49,10 @@ export default function Signin(props:{
     }
     ).then((response) => {
       props.setToken(response.data.token)
+      navigate('/')
+    }).catch(function(error){
+      console.log('problems with authentication')
+      console.log(error)
     })
   }
 

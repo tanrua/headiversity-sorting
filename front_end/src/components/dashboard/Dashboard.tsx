@@ -3,21 +3,16 @@ import { Route, Routes } from 'react-router-dom'
 
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
-import MuiDrawer from '@mui/material/Drawer'
 import Box from '@mui/material/Box'
-import MuiAppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import List from '@mui/material/List'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
-import Badge from '@mui/material/Badge'
 import Container from '@mui/material/Container'
-import Link from '@mui/material/Link'
 import MenuIcon from '@mui/icons-material/Menu'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
-import NotificationsIcon from '@mui/icons-material/Notifications'
-import { mainListItems, secondaryListItems } from './listItems'
+import { mainListItemsAuthorized, mainListItemsUnAuthorized, secondaryListItems } from './listItems'
 
 import Copyright from './Copyright'
 import Welcome from '../welcome/Welcome'
@@ -25,7 +20,6 @@ import Signin from '../auth/Signin'
 import PokemonFullSet from '../pokemon/PokemonFullSet'
 import PokemonByGeneration from '../pokemon/PokemonByGeneration'
 import { AppBar, Drawer } from './StyledElements'
-import BestInShow from '../welcome/BestInShow'
 
 const drawerWidth = 240
 const defaultTheme = createTheme()
@@ -85,11 +79,17 @@ export default function Dashboard() {
             </IconButton>
           </Toolbar>
           <Divider />
-          <List component='nav'>
-            {mainListItems}
-            <Divider sx={{ my: 1 }} />
-            {secondaryListItems}
-          </List>
+          {authToken == '' ? (
+            <List component='nav'>
+              {mainListItemsUnAuthorized}
+            </List>
+          ) : (
+            <List component='nav'>
+              {mainListItemsAuthorized}
+              <Divider sx={{ my: 1 }} />
+              {secondaryListItems}
+            </List>
+          )}
         </Drawer>
         <Box
           component='main'
@@ -106,8 +106,9 @@ export default function Dashboard() {
           <Toolbar />
           <Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}>
               <Routes>
-                <Route path='/' element={<BestInShow token={authToken} />} />
                 <Route path='/signin' element={<Signin token={authToken} setToken={setAuthToken} />} />
+
+                <Route path='/' element={<Welcome token={authToken} setToken={setAuthToken} />} />
                 <Route path='/pokemon' element={<PokemonFullSet token={authToken}/>} />
                 <Route path='/pokemon/:generation' element={<PokemonByGeneration token={authToken} />} />
               </Routes>

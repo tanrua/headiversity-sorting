@@ -1,11 +1,12 @@
-import * as React from 'react'
-import { Link, BrowserRouter } from 'react-router-dom'
+import {Fragment as React_Fragment} from 'react'
+import { Link } from 'react-router-dom'
 
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import ListSubheader from '@mui/material/ListSubheader'
 import DashboardIcon from '@mui/icons-material/Dashboard'
+import LoginIcon from '@mui/icons-material/Login'
 import LooksOne from '@mui/icons-material/LooksOne'
 import LooksTwo from '@mui/icons-material/LooksTwo'
 import Looks3 from '@mui/icons-material/Looks3'
@@ -14,19 +15,13 @@ import Looks5 from '@mui/icons-material/Looks5'
 import Looks6 from '@mui/icons-material/Looks6'
 import QueryStats from '@mui/icons-material/QueryStats'
 
-export const mainListItems = (
-  <React.Fragment>
+export const mainListItemsAuthorized = (
+  <React_Fragment>
     <ListItemButton component={Link} to='/'>
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
       <ListItemText primary='Dashboard' />
-    </ListItemButton>
-    <ListItemButton component={Link} to='/signin'>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary='Sign In' />
     </ListItemButton>
     <ListItemButton component={Link} to='/pokemon'>
       <ListItemIcon>
@@ -34,11 +29,22 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary='Pokemon List' />
     </ListItemButton>
-  </React.Fragment>
+  </React_Fragment>
+)
+
+export const mainListItemsUnAuthorized = (
+  <React_Fragment>
+    <ListItemButton component={Link} to='/signin'>
+      <ListItemIcon>
+        <LoginIcon />
+      </ListItemIcon>
+      <ListItemText primary='Sign In' />
+    </ListItemButton>
+  </React_Fragment>
 )
 
 export const secondaryListItems = (
-  <React.Fragment>
+  <React_Fragment>
     <ListSubheader component='div' inset>
       Pokemon by Generation
     </ListSubheader>
@@ -83,5 +89,5 @@ export const secondaryListItems = (
       </ListItemIcon>
       <ListItemText primary='Gen 6' />
     </ListItemButton>
-  </React.Fragment>
+  </React_Fragment>
 )

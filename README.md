@@ -7,6 +7,9 @@ Dev Evironment
 - Node version 20.9.0
 - NPM version 10.2.3
 
+## Addressing self-signed SSL certificate issues
+Browsers are smart, they don't want to let you hit some https api endpoint signed by some random linux box. The fastest way around this is to use an incognito tab for chrome or firefox. Or follow a guide  [like this one for chrome][https://stackoverflow.com/a/31900210] on enabling self signed certificats for localhost on your browser of choice.
+
 
 ## Setup
 The following commands are inteded to be run from the `root level` of the project where this README is located, unless noted in the Back/Front end sections.
@@ -37,7 +40,7 @@ Navigate to the `back_end` directory and install all the node dependencies.
 npm install
 ```
 
-Set up the DB by running the migrations and seeders
+Set up the DB by running the migrations and seeders. Make sure to select the User seed file in the interactive mode.
 ```bash
 node ace migration:run
 node ace db:seed -i

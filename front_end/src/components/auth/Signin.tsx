@@ -1,5 +1,4 @@
-
-import * as React from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import axios from 'axios';
 import TextField from '@mui/material/TextField'
 import Button  from '@mui/material/Button'
@@ -14,14 +13,17 @@ const client = axios.create({
   baseURL: AUTH_BASE_URL
 })
 
-export default function Signin() {
-  const [email, setEmail] = React.useState('null')
-  const [password, setPassword] = React.useState('')
-  const [isError, setError] = React.useState(false)
-  const [helperText, setHelperText] = React.useState("Sign in Successfull")
-  const [isButtonDisabled, setButtonDisabled] = React.useState(true)
+export default function Signin(props:{
+  token:string,
+  setToken:Dispatch<SetStateAction<string>>
+}) {
+  const [email, setEmail] = useState('null')
+  const [password, setPassword] = useState('')
+  const [isError, setError] = useState(false)
+  const [helperText, setHelperText] = useState("Sign in Successfull")
+  const [isButtonDisabled, setButtonDisabled] = useState(true)
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (email.trim() && password.trim()) {
       setButtonDisabled(false)
     } else {
@@ -39,8 +41,13 @@ export default function Signin() {
 
   const handleSignin = () => {
     console.log("signing in")
-    client.post('/signin?email='+email+'&password='+password).then((response) => {
+    client.post('/signin', {
+      email: email,
+      password: password
+    }
+    ).then((response) => {
       console.log(response)
+      props.setToken(response.data.token)
     })
   }
 
@@ -50,6 +57,7 @@ export default function Signin() {
         <form noValidate autoComplete="off">
           <Card>
             <CardHeader title="Sign In to the Poor Man's Pokedex" />
+            <CardHeader title={props.token} />
             <CardContent>
               <div>
                 <TextField

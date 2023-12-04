@@ -1,5 +1,5 @@
 
-import * as React from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import Grid from '@mui/material/Grid'
 import Paper from '@mui/material/Paper'
 import axios from 'axios'
@@ -12,11 +12,15 @@ const client = axios.create({
   baseURL: API_BASE_URL 
 })
 
-export default function PokemonFullSet() {
-  const [pokemon, setpokemon] = React.useState([])
+export default function PokemonFullSet(props:{
+  token:string
+}) {
+  const [pokemon, setpokemon] = useState([])
 
-  React.useEffect(() => {
-    client.get('?limit=1000').then((response) => {
+  useEffect(() => {
+    client.get('?limit=1000', {
+      headers: { Authorization: `Bearer ${props.token}` }
+    }).then((response) => {
       setpokemon(response.data.data)
     })
   }, [])

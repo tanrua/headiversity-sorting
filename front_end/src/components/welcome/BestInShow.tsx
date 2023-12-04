@@ -4,7 +4,9 @@ import { Grid, Paper, Radio, RadioGroup, FormControlLabel, FormControl, FormLabe
 import PokeChart from '../chart/PokeChart'
 import { TYPE_ENUM, HEAD_CELLS } from '../../constants/pokemonTableConstants'
 
-export default function BestInShow() {
+export default function BestInShow(props:{
+  token: string
+}) {
   const [sortStat, setSortStat] = React.useState('total_score')
   const [displayCount, setDisplayCount] = React.useState(10)
 
@@ -43,7 +45,8 @@ export default function BestInShow() {
                     height: 500,
                   }}
                 >
-                  <PokeChart 
+                  <PokeChart
+                    token={props.token} 
                     type={type} 
                     count={displayCount} 
                     sortStat={sortStat}

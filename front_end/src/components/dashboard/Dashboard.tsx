@@ -25,12 +25,15 @@ import Signin from '../auth/Signin'
 import PokemonFullSet from '../pokemon/PokemonFullSet'
 import PokemonByGeneration from '../pokemon/PokemonByGeneration'
 import { AppBar, Drawer } from './StyledElements'
+import BestInShow from '../welcome/BestInShow'
 
 const drawerWidth = 240
 const defaultTheme = createTheme()
 
 export default function Dashboard() {
   const [isOpen, setOpen] = React.useState(true)
+  const [authToken, setAuthToken] = React.useState('')
+
   const toggleDrawer = () => {
     setOpen(!isOpen)
   }
@@ -103,10 +106,10 @@ export default function Dashboard() {
           <Toolbar />
           <Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}>
               <Routes>
-                <Route path='/' element={<Welcome />} />
-                <Route path='/signin' element={<Signin />} />
-                <Route path='/pokemon' element={<PokemonFullSet />} />
-                <Route path='/pokemon/:generation' element={<PokemonByGeneration />} />
+                <Route path='/' element={<BestInShow token={authToken} />} />
+                <Route path='/signin' element={<Signin token={authToken} setToken={setAuthToken} />} />
+                <Route path='/pokemon' element={<PokemonFullSet token={authToken}/>} />
+                <Route path='/pokemon/:generation' element={<PokemonByGeneration token={authToken} />} />
               </Routes>
             <Copyright sx={{ pt: 4 }} />
           </Container>

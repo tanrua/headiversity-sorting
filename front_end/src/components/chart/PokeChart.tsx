@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import { useTheme, Typography } from '@mui/material'
 import { BarChart, Bar, XAxis, YAxis, Label, Legend, ResponsiveContainer } from 'recharts'
 import axios from 'axios'
@@ -8,17 +8,20 @@ const client = axios.create({
   baseURL: API_BASE_URL
 })
 
-export default function PokeChart( props:{
+export default function PokeChart(props:{
+  token: string,
   type: string,
   count: number,
   sortStat: string
 }) {
   const theme = useTheme()
 
-  const [pokemon, setpokemon] = React.useState([])
+  const [pokemon, setpokemon] = useState([])
 
-  React.useEffect(() => {
-    client.get('/chart?type='+props.type+'&stat='+props.sortStat+'&limit='+props.count).then((response) => {
+  useEffect(() => {
+    client.get('/chart?type='+props.type+'&stat='+props.sortStat+'&limit='+props.count, {
+      headers: { Authorization: `Bearer ${props.token}` }
+    }).then((response) => {
       setpokemon(response.data.data)
     })
   }, [props.sortStat, props.count])
@@ -26,7 +29,7 @@ export default function PokeChart( props:{
   console.log(pokemon)
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Typography component='h2' variant='h6' color='primary' gutterBottom>
         Top {props.count} Best for {props.type} type
       </Typography>
@@ -71,6 +74,6 @@ export default function PokeChart( props:{
           <Bar dataKey="speed" stackId="poke" fill="#F85888" />
         </BarChart>
       </ResponsiveContainer>
-    </React.Fragment>
+    </Fragment>
   )
 }

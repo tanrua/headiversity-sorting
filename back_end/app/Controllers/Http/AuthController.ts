@@ -10,7 +10,7 @@ export default class AuthController {
     try {
       const token = await auth.use('api').attempt(email, password, {
         name: 'Headiversity React App',
-        expiresIn: '30 mins'
+        expiresIn: '2 days'
       })
       return token
     } catch {

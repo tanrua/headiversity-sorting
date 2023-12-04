@@ -1,5 +1,4 @@
-
-import * as React from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import Grid from '@mui/material/Grid'
 import Paper from '@mui/material/Paper'
 import axios from 'axios'
@@ -16,13 +15,17 @@ type PokeParams = {
   generation: string
 }
 
-export default function PokemonByGeneration() {
+export default function PokemonByGeneration(props:{
+  token:string
+}) {
   const { generation } = useParams<PokeParams>()
-  const [pokemon, setpokemon] = React.useState([])
-  const [gen, setGen] = React.useState<string>('')
+  const [pokemon, setpokemon] = useState([])
+  const [gen, setGen] = useState<string>('')
 
-  React.useEffect(() => {
-    client.get('/gen/'+generation!).then((response) => {
+  useEffect(() => {
+    client.get('/gen/'+generation!, {
+      headers: { Authorization: `Bearer ${props.token}` }
+    }).then((response) => {
       setpokemon(response.data.data)
       setGen(generation!)
     })

@@ -62,7 +62,6 @@ export default function Signin(props:{
         <form noValidate autoComplete="off">
           <Card>
             <CardHeader title="Sign In to the Poor Man's Pokedex" />
-            <CardHeader title={props.token} />
             <CardContent>
               <div>
                 <TextField

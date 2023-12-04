@@ -32,17 +32,9 @@ Route.get('api/pokemon/chart', async (ctx) => {
   return new PokemonController().showByTypeAndStat(ctx)
 })
 
-Route.post('api/auth/signin', async ({ auth, request, response }) => {
-  const email = request.input('email')
-  const password = request.input('password')
-
-  try {
-    const token = await auth.use('api').attempt(email, password, {
-      name: 'Headiversity React App',
-      expiresIn: '30 mins'
-    })
-    return token
-  } catch {
-    return response.unauthorized('Invalid credentials')
-  }
+Route.post('api/auth/signin', async (ctx) => {
+  const { default: AuthController } = await import(
+    'App/Controllers/Http/AuthController'
+  )
+  return new AuthController().signin(ctx)
 })

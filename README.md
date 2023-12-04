@@ -7,6 +7,10 @@ Dev Evironment
 - Node version 20.9.0
 - NPM version 10.2.3
 
+User to test the App out with
+U: *admin@email.com*
+P: *supersecret*
+
 ## Addressing self-signed SSL certificate issues
 Browsers are smart, they don't want to let you hit some https api endpoint signed by some random linux box. The fastest way around this is to use an incognito tab for chrome or firefox. Or follow a guide  [like this one for chrome][https://stackoverflow.com/a/31900210] on enabling self signed certificats for localhost on your browser of choice.
 
@@ -35,6 +39,8 @@ npm install -g pg
 ```
 
 ### Back End
+Copy the `environment.env` file to the `back_end` directory and rename it to `.env` for the backend to use. Normally we'd never put a config/secrets file like this in the code base, but it is the most expedient way forward for such a small project.
+
 Navigate to the `back_end` directory and install all the node dependencies.
 ```bash
 npm install

@@ -52,7 +52,7 @@ node ace migration:run
 node ace db:seed -i
 ```
 
-Now you can finally load the canned pokemon data from the top level of this project `../seed_data/pokemon_data.csv`
+Now you can finally load the canned pokemon data that lives in the top level of this project (`headiversity-sorting/seed_data/pokemon_data.csv`)
 ```bash
 psql -h localhost -p 5432 -U postgres -d headiversity -c "\copy pokemon(id,name,type,sub_type,total_score,hp,attack,defense,sp_attack,sp_defense,speed,generation,legendary) FROM '../seed_data/pokemon_data.csv' DELIMITER ',' CSV HEADER"
 ```
@@ -62,8 +62,13 @@ And to keep things clean, since postgres copy does not handle auto increment val
 psql -h localhost -p 5432 -U postgres -d headiversity -c "ALTER SEQUENCE pokemon_id_seq RESTART WITH 722"
 ```
 
+Finally, we start the back end with 
+```bash
+node ace serve
+```
+
 ### Front End
-Like before, now navigate to the `front_end` directory first and install all the node dependencies.
+Like before, now open a new terminal and navigate to the `front_end` directory first and install all the node dependencies.
 ```bash
 npm install
 ```
